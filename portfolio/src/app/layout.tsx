@@ -43,7 +43,7 @@ export default function RootLayout({
               </a>
             </p>
           </StickyBanner>
-          <div className="relative z-30">
+          <div className="relative z-30 -my-6">
             <NavClass/>
           </div>
           <div className="">

@@ -17,9 +17,8 @@ export function Navbar({ className }: { className?: string }) {
   const resumeLink = process.env.NEXT_PUBLIC_RESUME_LINK;
   
   return (
-    <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl md:mx-auto z-50 mx-2", className)}
-    >
+    <div className={cn("fixed top-10 inset-x-0 max-w-2xl md:mx-auto z-50 mx-2", className)}>
+      <div className="my-6">
       <Menu setActive={setActive}>
         <HoveredLink href="/">Home</HoveredLink>
         <MenuItem setActive={setActive} active={active} item="Experience">
@@ -82,6 +81,7 @@ export function Navbar({ className }: { className?: string }) {
         <HoveredLink href="/store">Store ⚡</HoveredLink>
         </div>
       </Menu>
+      </div>
     </div>
   );
 }
