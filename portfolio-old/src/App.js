@@ -14,6 +14,7 @@ import Blog from './components/pages/Blog/Main';
 import About from './components/pages/Blog/About';
 import SaketBoi from './components/pages/Saket';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -56,6 +57,7 @@ function Content() {
         <Route path="/about" element={<About/>} /> 
         <Route path="/saket" element={<SaketBoi/>} />
       </Routes>
+      <div class="bhashini-plugin-container"></div>
       {shouldRenderHeaderFooter && <Footer />} {/* Conditionally render the Footer */}
     </>
   );
