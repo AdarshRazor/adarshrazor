@@ -13,7 +13,7 @@ import Error404 from './components/pages/error404';
 import Blog from './components/pages/Blog/Main';
 import About from './components/pages/Blog/About';
 import SaketBoi from './components/pages/Saket';
-
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
@@ -23,42 +23,39 @@ function App() {
   );
 }
 
-
-
 function Content() {
   const location = useLocation();
-  
-  //const HeaderFooter404 = location.pathname !== '/misc';
-  const HeaderFooter404 = location.pathname !== '/404';
-  const HeaderFooterBlog = location.pathname !== '/blog';
-  const HeaderFooterAbout = location.pathname !== '/about';
-  const Saket = location.pathname !== '/saket';
 
-  const shouldRenderHeaderFooter = location.pathname !== '/404' && location.pathname !== '/blog' && location.pathname !== '/about' && location.pathname !== '/saket';
+  const shouldRenderHeaderFooter =
+    location.pathname !== '/404' &&
+    location.pathname !== '/blog' &&
+    location.pathname !== '/about' &&
+    location.pathname !== '/saket';
 
   if (!location) {
     return <div>Error: Location is null</div>;
   }
 
-
   return (
     <>
-      {shouldRenderHeaderFooter && <Header />} {/* Conditionally render the Navbar */}
+      {shouldRenderHeaderFooter && <Header />} {/* Conditionally render Navbar */}
       <Routes>
-        <Route path="/" element={<Home />} /> {/* Add a Home route (optional) */}
+        <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/nontech" element={<NonTech />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/bucketlist" element={<BucketList />} />
         <Route path="/misc" element={<Misc />} />
-        {/*<Route path="*" element={<Error404 />} />  Add a 404 route (optional) */}
         <Route path="/404" element={<Error404 />} />
-        <Route path="/about" element={<About/>} /> 
-        <Route path="/saket" element={<SaketBoi/>} />
+        <Route path="/about" element={<About />} /> 
+        <Route path="/saket" element={<SaketBoi />} />
       </Routes>
-      <div class="bhashini-plugin-container"></div>
-      {shouldRenderHeaderFooter && <Footer />} {/* Conditionally render the Footer */}
+      {shouldRenderHeaderFooter && (
+      <ErrorBoundary>
+        {shouldRenderHeaderFooter && <Footer />} {/* Conditionally render Footer */}
+      </ErrorBoundary>
+        )}
     </>
   );
 }

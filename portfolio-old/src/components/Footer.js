@@ -5,56 +5,60 @@ import './styles/Footer.css'; // Make sure to create this CSS file
 
 const Footer = () => {
     useEffect(() => {
-        console.log('🚀 Bhashini Translation Plugin: Initialization started...');
-        
-        // Check if script already exists to prevent duplicate loading
+    console.log('🚀 Bhashini Translation Plugin: Initialization started...');
+
+    try {
+        // Prevent duplicate injection
         const existingScript = document.querySelector('script[src*="bhashini.co.in"]');
         if (existingScript) {
-            console.log('⚠️ Bhashini Translation Plugin: Script already loaded, skipping...');
+            console.log('⚠️ Bhashini Plugin: Script already loaded, skipping...');
             return;
         }
 
-        try {
-            const script = document.createElement("script");
-            script.src = "https://translation-plugin.bhashini.co.in/v3/website_translation_utility.js";
-            script.async = true;
-            
-            // Add success handler
-            script.onload = () => {
-                console.log('✅ Bhashini Translation Plugin: Successfully loaded and ready!');
-                console.log('🌐 Translation features now available for the website');
-                
-                // Optional: Check if Bhashini object is available
-                if (window.Bhashini) {
-                    console.log('🔧 Bhashini API object detected:', window.Bhashini);
-                } else {
-                    console.log('⏳ Bhashini API object not immediately available, may load asynchronously');
-                }
-            };
-            
-            // Add error handler
-            script.onerror = (error) => {
-                console.error('❌ Bhashini Translation Plugin: Failed to load!', error);
-                console.log('🔍 Please check internet connection and Bhashini service status');
-            };
-            
-            // Append script to document body
-            document.body.appendChild(script);
-            console.log('📦 Bhashini Translation Plugin: Script injection completed');
-            
-        } catch (error) {
-            console.error('💥 Bhashini Translation Plugin: Critical error during setup:', error);
-        }
+        const script = document.createElement("script");
+        script.src = "https://translation-plugin.bhashini.co.in/v3/website_translation_utility.js";
+        script.async = true;
 
-        // Cleanup function to remove script when component unmounts
-        return () => {
-            const scriptToRemove = document.querySelector('script[src*="bhashini.co.in"]');
-            if (scriptToRemove) {
-                document.body.removeChild(scriptToRemove);
-                console.log('🧹 Bhashini Translation Plugin: Cleaned up on component unmount');
+        // Success handler
+        script.onload = () => {
+            console.log('✅ Bhashini Plugin loaded successfully');
+            if (window.Bhashini) {
+                console.log('🔧 Bhashini API object available:', window.Bhashini);
+            } else {
+                console.log('⏳ Bhashini API not yet available, may load asynchronously');
             }
         };
-    }, []); // Empty dependency array ensures this runs only once when component mounts
+
+        // Error handler (prevents "Script error" crash)
+        script.onerror = (error) => {
+            console.error('❌ Failed to load Bhashini Plugin:', error);
+        };
+
+        // Append script
+        document.body.appendChild(script);
+        console.log('📦 Script injection completed');
+
+        // Global window error handler (catches external script runtime errors)
+        window.addEventListener("error", (event) => {
+            if (event.filename && event.filename.includes("bhashini.co.in")) {
+                console.error("💥 Bhashini Plugin runtime error:", event.message);
+                event.preventDefault(); // stops React crash
+            }
+        });
+
+    } catch (err) {
+        console.error("💥 Critical error while setting up plugin:", err);
+    }
+
+    return () => {
+        const scriptToRemove = document.querySelector('script[src*="bhashini.co.in"]');
+        if (scriptToRemove) {
+            document.body.removeChild(scriptToRemove);
+            console.log("🧹 Bhashini Plugin script removed on unmount");
+        }
+    };
+   }, []);
+
 
     return (
         <Container fluid className="footer-container mb-3">
@@ -86,6 +90,10 @@ const Footer = () => {
                         {" "}adarsh007
                     </a>
                 </Col>
+            </Row>
+
+            {/* 🔹 Bhashini Plugin Container */}
+            <Row className="justify-content-center mt-3">
             </Row>
         </Container>
     );
