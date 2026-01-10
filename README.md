@@ -11,6 +11,8 @@
   <img src="https://giffiles.alphacoders.com/822/8223.gif">
 </p>
 
+[![Adarsh's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=adarshrazor&days=45&bg_color=0c1014&color=268f77&line=268f77&point=268f77&area=true&hide_border=true)]
+
 ### 🛠 &nbsp;Tech Stack
 
 ![Python](https://img.shields.io/badge/-Python-333333?style=flat&logo=python)&nbsp;
