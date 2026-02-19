@@ -6,7 +6,7 @@ import {
   IconArticle,
   IconCode,
   IconBriefcase,
-  IconPlayCardA ,
+  IconPlayCardA,
 } from "@tabler/icons-react";
 
 export function ContactDock() {
@@ -47,11 +47,11 @@ export function ContactDock() {
       href: "/experience",
     },
     {
-      title: "Playground",
+      title: "playNooK",
       icon: (
         <IconPlayCardA className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
-      href: "/playground",
+      href: "/playNook",
     },
   ];
   return (

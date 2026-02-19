@@ -1,24 +1,32 @@
 "use client";
 import React, { useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
+import {
+  HoveredLink,
+  Menu,
+  MenuItem,
+  ProductItem,
+} from "@/components/ui/navbar-menu";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function NavClass() {
-    return (
-        <div className="relative w-full flex items-center justify-center">
-            <Navbar className="top-4" />
-        </div>
-    );
-  }
+  return (
+    <div className="relative w-full flex items-center justify-center">
+      <Navbar className="top-4" />
+    </div>
+  );
+}
 
 export function Navbar({ className }: { className?: string }) {
   const [active, setActive] = useState<string | null>(null);
   const resumeLink = process.env.NEXT_PUBLIC_RESUME_LINK;
-  
+
   return (
     <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl md:mx-auto z-50 mt-4", className)}
+      className={cn(
+        "fixed top-10 inset-x-0 max-w-2xl md:mx-auto z-50 mt-4",
+        className,
+      )}
     >
       <Menu setActive={setActive}>
         <HoveredLink href="/">Home</HoveredLink>
@@ -45,8 +53,8 @@ export function Navbar({ className }: { className?: string }) {
               description="Beyond the Binary & Brimming with Banality, Where Circuits Rest & Curiosities Reign."
             />
             <ProductItem
-              title="Playground"
-              href="/playground"
+              title="playNooK"
+              href="/playNook"
               src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
               description="under_thinking, under_construction, under_review 😜"
             />
@@ -56,25 +64,38 @@ export function Navbar({ className }: { className?: string }) {
               src="/images/website/bucketlist.png"
               description="My To-Do List Before I'm To-Done 🏁"
             />
-            <HoveredLink href="/#contact" onClick={(e) => {
-              e.preventDefault();
-              const isHomePage = window.location.pathname === '/';
-              if (isHomePage) {
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                window.location.href = '/#contact';
-              }
-            }}>know me better 💬</HoveredLink>
+            <HoveredLink
+              href="/#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                const isHomePage = window.location.pathname === "/";
+                if (isHomePage) {
+                  document
+                    .getElementById("contact")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  window.location.href = "/#contact";
+                }
+              }}
+            >
+              know me better 💬
+            </HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Misc">
-            <div className="flex flex-col space-y-4 text-sm">
-                <HoveredLink href={resumeLink} target="_blank" rel="noopener noreferrer">📜 Resume</HoveredLink>
-                <ThemeToggle />
-            </div>  
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink
+              href={resumeLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📜 Resume
+            </HoveredLink>
+            <ThemeToggle />
+          </div>
         </MenuItem>
         <div className="px-4">
-        <HoveredLink href="/store">Store ⚡</HoveredLink>
+          <HoveredLink href="/store">Store ⚡</HoveredLink>
         </div>
       </Menu>
     </div>
