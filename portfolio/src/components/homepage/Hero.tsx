@@ -19,7 +19,7 @@ function Hero() {
 
   const words = [
     "Hello\u002C ",
-    "नमस्ते\u002C ",
+    //"नमस्ते\u002C ",
     "Bonjour\u002C ",
     "Hola\u002C ",
     "Ciao\u002C ",
