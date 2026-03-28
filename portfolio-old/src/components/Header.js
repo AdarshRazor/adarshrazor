@@ -25,6 +25,8 @@ const Header = () => {
 
     return (
         <>
+                       
+
             <nav sticky="top">
                 <div to="/" className="navbar-brand" style={{ color: isHomePage ? 'white' : 'black', cursor: 'pointer' }} onClick={handleNavbarBrandClick}>
                     Adarsh Anand{/* &lt;Adarsh Anand/&gt; */}
@@ -44,7 +46,7 @@ const Header = () => {
                         <NavLink to="/experience">Experience</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/projects">Projects</NavLink>
+                        <NavLink to="/project">Projects</NavLink>
                     </li>
                     <li>
                         <NavLink to="/blog">Blog</NavLink>
@@ -57,6 +59,9 @@ const Header = () => {
                     </li>
                     <li>
                         <a href="https://drive.google.com/file/d/1PmZbsKaXMBSWXhjV5ISfczIlbNeamAlm/view?usp=sharing" target="_blank" rel="noreferrer">Resume</a>
+                    </li>
+                    <li>
+                         <div className="bhashini-plugin-container"></div>
                     </li>
                 </ul>
             </nav>
