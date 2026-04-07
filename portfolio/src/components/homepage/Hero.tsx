@@ -1,13 +1,7 @@
-import React from "react";
-import { motion } from "motion/react";
-import { HeroHighlight, Highlight } from "../ui/hero-highlight";
-import { FlipWords } from "../ui/flip-words";
-//import { HoverBorderGradient } from '../ui/hover-border-gradient'
-import { RainbowButton } from "@/components/magicui/rainbow-button";
+import Image from "next/image";
 //import { ShinyButton } from "@/components/magicui/shiny-button";
 
 function Hero() {
-  const resumeLink = process.env.NEXT_PUBLIC_RESUME_LINK;
   const [showSnipchat, setShowSnipchat] = React.useState(true);
 
   React.useEffect(() => {
@@ -19,7 +13,7 @@ function Hero() {
 
   const words = [
     "Hello\u002C ",
-    //"नमस्ते\u002C ",
+    "नमस्ते\u002C ",
     "Bonjour\u002C ",
     "Hola\u002C ",
     "Ciao\u002C ",
@@ -36,10 +30,12 @@ function Hero() {
             animate={{ opacity: showSnipchat ? 1 : 0 }}
             transition={{ duration: 1.5 }}
           >
-            <img
+            <Image
               src="/images/website/SnipChat _ playNooK.png"
               alt="SnipChat PlayNooK QR"
-              className="w-48 h-48 object-contain rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-800 bg-white"
+              width={192}
+              height={192}
+              className="object-contain rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-800 bg-white"
             />
           </motion.div>
 
@@ -85,10 +81,12 @@ function Hero() {
             animate={{ opacity: !showSnipchat ? 1 : 0 }}
             transition={{ duration: 1.5 }}
           >
-            <img
+            <Image
               src="/images/website/linkedin.png"
               alt="LinkedIn QR"
-              className="w-48 h-48 object-contain rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-800 bg-white"
+              width={192}
+              height={192}
+              className="object-contain rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-800 bg-white"
             />
           </motion.div>
         </div>
