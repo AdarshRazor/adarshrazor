@@ -32,7 +32,7 @@ const SectionWrapper = ({ title, subtitle, children, priority = false }: { title
                 </h2>
             </div>
             <div className="h-px flex-1 bg-gray-100 dark:bg-white/10 mx-8 hidden md:block" />
-            <div className="text-xs font-mono text-gray-400 mt-4 md:mt-0 uppercase">Endless_Loop_v1.0</div>
+            <div className="text-xs font-mono text-gray-400 mt-4 md:mt-0 uppercase">Updated: hh:mm ago</div>
         </div>
         {children}
     </motion.section>
@@ -65,7 +65,7 @@ export default function NotSoTech() {
 
   // 🔵 [NotSoTech]: User preference detected: ${preference} - reordering sections
   const sections = [
-    { type: 'Music', title: 'Sonic Architecture', sub: 'Auditory Fuel', content: (
+    { type: 'Music', title: 'play a song till you are here 🎵', sub: '# Music', content: (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filterByType('Music').map((item) => (
                 <div key={item.id} className="rounded-2xl overflow-hidden glass border dark:border-white/10 shadow-2xl transition-transform hover:-rotate-1">
@@ -81,7 +81,7 @@ export default function NotSoTech() {
             ))}
         </div>
     )},
-    { type: 'Food', title: 'Gastronomic Map', sub: 'Mainland India', content: (
+    { type: 'Food', title: '', sub: '# food', content: (
         <Marquee pauseOnHover className="[--duration:40s]">
             {filterByType('Food').map((item) => (
                 <a 

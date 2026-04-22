@@ -1,4 +1,9 @@
 import Image from "next/image";
+import React from "react";
+import { motion } from "framer-motion";
+import { FlipWords } from "@/components/ui/flip-words";
+import { Highlight } from "@/components/ui/hero-highlight";
+import { HeroHighlight } from "@/components/ui/hero-highlight";
 //import { ShinyButton } from "@/components/magicui/shiny-button";
 
 function Hero() {
